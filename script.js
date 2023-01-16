@@ -35,7 +35,7 @@ function fetchWeather(query, units) {
     .then(function (response) {
       renderWeather(response);
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
     });
 }
@@ -79,10 +79,14 @@ function handleInput() {
       }
     } else {
       // fetch weather details
-      fetchWeather(searchInput.value, "metric");
-      // update display
-      containerMain.classList.toggle("active");
-      resultsContainer.classList.toggle("active");
+
+      console.log(fetchWeather(searchInput.value, "metric"));
+
+      if (fetchWeather(searchInput.value, "metric") !== "error") {
+        // update display
+        containerMain.classList.toggle("active");
+        resultsContainer.classList.toggle("active");
+      }
     }
   }
 
